@@ -7,9 +7,15 @@ class Computer {
         this.map = bgObj.map;
         this.type = 0;
         this.ai = new Ai(bgObj, this);
+        this.isFisrt = true;
     }
 
     play() {
+        if (this.isFisrt) {
+            bgObj.clickMap[~~(this.h / 2)][~~(this.w / 2)]();
+            this.isFisrt = false;
+            return;
+        }
         var piece = this.ai.nextPiece();
         let x = piece.x;
         let y = piece.y;

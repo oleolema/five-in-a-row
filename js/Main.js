@@ -18,6 +18,8 @@ init();         //初始化
 function init() {
     bgObj.init();       //初始棋盘
     roundObj.init();
+    // AI 先手
+    // piece1.set(roundObj.pieceCur, 0.5);
 }
 function f() {
     var result = ai.get4(0, 0);
