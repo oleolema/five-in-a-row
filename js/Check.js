@@ -2,7 +2,16 @@
     window.Check = function (bgObj) {
         this.bgObj = bgObj;
         this.check = bgObj.map;
-        this.p = [[0, 1], [1, 1], [1, 0], [1, -1], [0, -1], [-1, -1], [-1, 0], [-1, 1]];
+        this.p = [
+            [0, 1],
+            [1, 1],
+            [1, 0],
+            [1, -1],
+            [0, -1],
+            [-1, -1],
+            [-1, 0],
+            [-1, 1]
+        ];
         this.w = this.bgObj.w;
         this.h = this.bgObj.h;
     }
@@ -27,7 +36,8 @@
     }
 
     Check.prototype.win = function () {
-        new Toast(roundObj.now + " is win!!!");
+        this.bgObj.gameOver = true;
+        new Toast(`${roundObj.players[roundObj.now].piece.color} won!!! <a href="javascript:void(0);" onclick="location.reload()">重新开始</a>`, 0x7fffffff, false);
     }
 
 
@@ -57,6 +67,6 @@
         return m;
     }
 
-    
+
 
 })();

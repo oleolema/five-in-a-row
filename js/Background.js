@@ -9,8 +9,12 @@
         this.piece = [];            //存储棋子类型
         this.map = [];              //用于判断胜负的棋盘
         this.clickMap = [];         //用于可以点击的棋盘
+        this.gameOver = false;
         var self = this;
         this.clickPiece = function (td, x, y) {
+            if(this.gameOver){
+                return;
+            }
             console.info(td, x, y);
             if (this.map[y][x] != -1) {
                 new Toast("此处已有棋子", 1000);

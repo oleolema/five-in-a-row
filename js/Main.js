@@ -1,5 +1,5 @@
-var w = 13;
-var h = 13;
+var w = 15;
+var h = 15;
 
 var bgObj = new Background(w, h);       //创建一个棋盘
 var checkObj = new Check(bgObj);       //创建一个检查棋盘类

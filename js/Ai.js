@@ -24,38 +24,38 @@ class Ai {
         var o = this.o = this.m == 0 ? 1 : 0;
         //棋谱
         this.template = [
-            { name: "连5a", a: [m, m, m, m, m], g: [-1], v: 10000000 },      //连5
+            { name: "连5a", a: [m, m, m, m, m], g: [-1], v: 100000000, ov: 1000000},      //连5
 
-            { name: "活4a", a: [n, m, m, m, m, n], g: [0, 5], v: 1000000 },   //活4 -->  连5
+            { name: "活4a", a: [n, m, m, m, m, n], g: [0, 5], v: 100000000, ov: 1000000 },   //活4 -->  连5
 
-            { name: "眠4a", a: [n, m, m, m, m, o], g: [0], v: 1000000 },   //眠4  -->  连5
-            { name: "眠4b", a: [m, n, m, m, m], g: [1], v: 1000000 },
-            { name: "眠4c", a: [m, m, n, m, m], g: [2], v: 1000000 },
+            { name: "眠4a", a: [n, m, m, m, m, o], g: [0], v: 100000000, ov: 1000000 },   //眠4  -->  连5
+            { name: "眠4b", a: [m, n, m, m, m], g: [1], v: 100000000 ,ov: 1000000},
+            { name: "眠4c", a: [m, m, n, m, m], g: [2], v: 100000000 ,ov: 1000000},
 
-            { name: "活3a", a: [o, n, m, m, m, n, n], g: [5], v: 3000 },      //活3 --> 活4
-            { name: "活3b", a: [n, n, m, m, m, n, n], g: [1, 5], v: 3000 },
-            { name: "活3c", a: [n, m, n, m, m, n], g: [2], v: 3000 },
+            { name: "活3a", a: [o, n, m, m, m, n, n], g: [5], v: 10000000, ov: 1000000 },      //活3 --> 活4
+            { name: "活3b", a: [n, n, m, m, m, n, n], g: [1, 5], v: 10000000 , ov: 1000000 },
+            { name: "活3c", a: [n, m, n, m, m, n], g: [2], v: 10000000 , ov: 1000000 },
 
-            { name: "眠3a", a: [n, n, m, m, m, o], g: [0, 1], v: 2000 },         //眠3 --> 眠4
-            { name: "眠3b", a: [n, m, n, m, m, o], g: [0, 2], v: 2000 },
-            { name: "眠3c", a: [n, m, m, n, m, o], g: [0, 3], v: 2000 },
-            { name: "眠3d", a: [m, n, n, m, m], g: [1, 2], v: 2000 },
-            { name: "眠3e", a: [m, n, m, n, m], g: [1, 3], v: 2000 },
-            { name: "眠3f", a: [o, n, m, m, m, n, o], g: [1, 5], v: 2000 },
+            { name: "眠3a", a: [n, n, m, m, m, o], g: [0, 1], v: 1000, ov: 2000  },         //眠3 --> 眠4
+            { name: "眠3b", a: [n, m, n, m, m, o], g: [0, 2], v: 1000, ov: 2000  },
+            { name: "眠3c", a: [n, m, m, n, m, o], g: [0, 3], v: 1000, ov: 2000  },
+            { name: "眠3d", a: [m, n, n, m, m], g: [1, 2], v: 1000 , ov: 2000 },
+            { name: "眠3e", a: [m, n, m, n, m], g: [1, 3], v: 1000 , ov: 2000 },
+            { name: "眠3f", a: [o, n, m, m, m, n, o], g: [1, 5], v: 1000, ov: 2000  },
 
-            { name: "活2a", a: [n, n, m, m, n, n], g: [1, 4], v: 1800 },          //活2 --> 活3
-            { name: "活2b", a: [n, n, m, m, n, o], g: [4], v: 1800 },
-            { name: "活2c", a: [n, m, n, m, n, n], g: [2], v: 1700 },
+            { name: "活2a", a: [n, n, m, m, n, n], g: [1, 4], v: 1800 , ov: 1800 },          //活2 --> 活3
+            { name: "活2b", a: [n, n, m, m, n, o], g: [4], v: 1800 , ov: 1800 },
+            { name: "活2c", a: [n, m, n, m, n, n], g: [2], v: 1700 , ov: 1700 },
 
-            { name: "眠2a", a: [n, n, n, m, m, o], g: [0, 1, 2], v: 100 },          //眠2 --> 眠3
-            { name: "眠2b", a: [n, n, m, n, m, o], g: [0, 1, 3], v: 100 },
-            { name: "眠2c", a: [n, m, n, n, m, o], g: [0, 2, 3], v: 100 },
-            { name: "眠2d", a: [m, n, n, n, m], g: [1, 2, 3], v: 100 },
+            { name: "眠2a", a: [n, n, n, m, m, o], g: [0, 1, 2], v: 300 , ov: 100 },          //眠2 --> 眠3
+            { name: "眠2b", a: [n, n, m, n, m, o], g: [0, 1, 3], v: 300 , ov: 100 },
+            { name: "眠2c", a: [n, m, n, n, m, o], g: [0, 2, 3], v: 300 , ov: 100 },
+            { name: "眠2d", a: [m, n, n, n, m], g: [1, 2, 3], v: 300 , ov: 100 },
 
-            { name: "活1a", a: [n, n, n, m, n, n], g: [1, 2, 4], v: 10 },          //活1 --> 活2
-            { name: "活1b", a: [n, n, n, m, n, o], g: [1, 2], v: 10 },
+            { name: "活1a", a: [n, n, n, m, n, n], g: [1, 2, 4], v: 50 , ov: 20 },          //活1 --> 活2
+            { name: "活1b", a: [n, n, n, m, n, o], g: [1, 2], v: 50 , ov: 20 },
 
-            { name: "眠1a", a: [n, n, n, n, m, o], g: [0, 1, 2, 3], v: 30 },          //眠1 --> 眠2
+            { name: "眠1a", a: [n, n, n, n, m, o], g: [0, 1, 2, 3], v: 30, ov: 10  },          //眠1 --> 眠2
 
         ];
     }
@@ -63,7 +63,7 @@ class Ai {
     judgeEnemy() {
         var m = this.m == 0 ? 1 : 0;
         this.setMe(m);
-        var max = this.judge(this.enemyScoreMap);
+        var max = this.judge(this.enemyScoreMap, false);
         m = this.m == 0 ? 1 : 0;
         this.setMe(m);
         return max;
@@ -100,7 +100,7 @@ class Ai {
 
     get4(y1, x1) {
         var result = [];
-        for (var k = 0; k < 4; k++) {
+        for (var k = 0; k < 8; k++) {
             result[k] = [];
             for (var i = 0; i < 7; i++) {
                 var x = x1 + this.p[k][0] * i;
@@ -116,6 +116,7 @@ class Ai {
                 }
             }
         }
+        // console.info(`x:${x},y:${y}`, result);
         return result;
     }
 
@@ -124,27 +125,27 @@ class Ai {
     }
 
     //计算分值图，返回最大的一个点
-    judge(scoreMap) {
-        console.info(`m: ${this.m}, o: ${this.o}`);
+    judge(scoreMap, isMe = true) {
+        console.info(`m: ${this.m}, o: ${this.o}, isMe: ${isMe}`);
         scoreMap = scoreMap || this.scoreMap;
         this.setScoreMap0(scoreMap);         //分值表初始化为0
         for (var i = 0; i < h; i++) {
             for (var j = 0; j < w; j++) {
                 var result = this.get4(i, j);      //获取4个方向的棋子
-                this.judge1(scoreMap, result);
+                this.judge1(scoreMap, result, isMe);
                 //最左边一列
                 if (j == 0) {
                     for (var k = 1; k < 4; k++) {
                         result[k].unshift(null);
                     }
-                    this.judge1(scoreMap, result);
+                    this.judge1(scoreMap, result, isMe);
                 }
                 //最上边一列
                 if (i == 0) {
                     result[0].unshift(null);
                     result[1].unshift(null);
                     result[3].unshift(null);
-                    this.judge1(scoreMap, result);
+                    this.judge1(scoreMap, result, isMe);
                 }
             }
         }
@@ -164,10 +165,10 @@ class Ai {
     }
 
 
-    judge1(scoreMap, result) {
+    judge1(scoreMap, result, isMe = true) {
         for (var j in result) {
             for (var i in this.template) {
-                var t = this.isTemplate(result[j], this.template[i]);
+                var t = this.isTemplate(result[j], this.template[i], isMe);
                 if (t) {
                     console.info(t);
                     for (var k = 0; k < t.g.length; k++) {
@@ -184,8 +185,8 @@ class Ai {
 
 
 
-    isTemplate1(rs, tem) {
-        var t = { a: [], v: tem.v, name: tem.name, g: tem.g };
+    isTemplate1(rs, tem, isMe = true) {
+        var t = { a: [], v: isMe ? tem.v : tem.ov, name: tem.name, g: tem.g };
         // console.info(rs);
         for (var i = 0; i < tem.a.length; i++) {
             if (rs[i] && rs[i].v == this.m && tem.a[i] == this.m) {       //自己的棋子
@@ -204,8 +205,8 @@ class Ai {
         return t;
     }
 
-    isTemplate(rs, tem) {
-        var t = this.isTemplate1(rs, tem)
+    isTemplate(rs, tem, isMe = true) {
+        var t = this.isTemplate1(rs, tem, isMe)
         if (t) {      //正向查找
             return t;
         } else {    //反向查找
@@ -214,7 +215,7 @@ class Ai {
             for (var i = 0; i < tem.g.length; i++) {
                 rg.push(tem.a.length - 1 - tem.g[i]);
             }
-            t = this.isTemplate1(rs, { name: "R" + tem.name, a: ra, g: rg, v: tem.v });
+            t = this.isTemplate1(rs, { name: "R" + tem.name, a: ra, g: rg, v: tem.v, ov: tem.ov }, isMe);
             tem.a.reverse();    //恢复正向
         }
         return t;
